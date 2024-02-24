@@ -1,0 +1,85 @@
+<mat-toolbar class="toolbar">
+    <span class="tool-headings">Logo</span>
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" class="tool-headings"></mat-icon>
+    <span class="tool-headings">About us</span>
+    <span class="tool-headings">Features</span>
+    <span class="tool-headings">Contact us</span>
+    <mat-icon aria-hidden="false">login</mat-icon>
+    <span class="tool-headings">Logout</span>
+    <button mat-icon-button class="menu-button" aria-label="Toggle menu" (click)="toggleMenu()">
+        <mat-icon>menu</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container class="container">
+    <mat-sidenav class="sidenav" #sidenav>
+        <mat-nav-list>
+            <a mat-list-item href="#">Home</a>
+            <a mat-list-item href="#">About</a>
+            <a mat-list-item href="#">Features</a>
+            <a mat-list-item href="#">Contact</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<div class="login-container">
+    <div class="form-container">
+        <form class="login-form">
+            <h2 class="login-header">Register</h2>
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                    placeholder="Enter Email">
+                @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                <mat-error>Please enter a valid email address</mat-error>
+                }
+                @if (emailFormControl.hasError('required')) {
+                <mat-error>*Email is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>First Name</mat-label>
+                <input type="text" matInput [formControl]="passwordFormControl" placeholder="Enter First Name">
+                @if (passwordFormControl.hasError('text') && !passwordFormControl.hasError('required')) {
+                <mat-error>Please enter a First Name</mat-error>
+                }
+                @if (passwordFormControl.hasError('required')) {
+                <mat-error>*Field is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input type="text" matInput [formControl]="passwordFormControl" placeholder="Enter Last Name">
+                @if (passwordFormControl.hasError('text') && !passwordFormControl.hasError('required')) {
+                <mat-error>Please enter a Last Name</mat-error>
+                }
+                @if (passwordFormControl.hasError('required')) {
+                <mat-error>*Field is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput [formControl]="passwordFormControl" placeholder="Enter Password">
+                @if (passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')) {
+                <mat-error>Please enter a valid password</mat-error>
+                }
+                @if (passwordFormControl.hasError('required')) {
+                <mat-error>*Password is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Mobile Number</mat-label>
+                <input type="number" matInput [formControl]="passwordFormControl" placeholder="Enter Password">
+            </mat-form-field>
+            <div class="btnlogin">
+            <button mat-raised-button color="primary" type="submit" >Signup</button>
+        </div>
+            <div class="Create-account">
+                <h4>Already have an Account? <a href="#" style="text-decoration: underline;" [routerLink]="['/']"><strong><b>Login</b></strong></a></h4>
+            </div>
+        </form>
+    </div>
+</div>
