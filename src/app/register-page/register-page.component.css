@@ -20,7 +20,7 @@
     
   }
   .login-form {
-    width: 350px; /* Adjust as needed */
+    width: 80%; /* Adjust as needed */
     
   }
   .btnlogin
@@ -42,7 +42,7 @@
     text-align: center;
   }
   .example-full-width{
-    width: 350px;
+    width: 105%;
     background-color: rgb(255, 255, 255);
     height: 65px;
   }
@@ -74,9 +74,6 @@
     width: 20px; /* Adjust the width as needed */
    
 }
-
-
-  
   
   @media  screen and (max-width: 600px) {
     .menu-button {

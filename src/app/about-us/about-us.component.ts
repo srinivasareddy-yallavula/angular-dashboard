@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatTableModule} from '@angular/material/table';
-import { MatListModule } from '@angular/material/list';
-import {CurrencyPipe} from '@angular/common';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
+import { CurrencyPipe } from '@angular/common';
 import { LoginPageComponent } from '../login-page/login-page.component';
-import { AboutUsComponent } from '../about-us/about-us.component';
-
-
-
+import { ContactUsComponent } from '../contact-us/contact-us.component';
+import { FeaturesComponent } from '../features/features.component';
+import { LogoComponent } from '../logo/logo.component';
 
 interface Transaction {
   item: string;
@@ -20,14 +20,15 @@ interface Transaction {
 
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-about-us',
   standalone: true,
-  imports: [MatIconModule,AboutUsComponent,
+  imports: [DashboardComponent,MatIconModule,AboutUsComponent,ContactUsComponent,FeaturesComponent,LogoComponent,
     MatButtonModule,MatToolbarModule,MatSidenavModule,MatTableModule,MatListModule,CurrencyPipe,RouterModule,RouterOutlet,LoginPageComponent],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  templateUrl: './about-us.component.html',
+  styleUrl: './about-us.component.css'
 })
-export class DashboardComponent {
+
+export class AboutUsComponent {
   displayedColumns: string[] = ['item', 'cost'];
   transactions: Transaction[] = [
     {item: 'Beach ball', cost: 4},
@@ -50,5 +51,5 @@ export class DashboardComponent {
   badgevisibility() {
     this.badgevisible = true;
   }
-  
+
 }

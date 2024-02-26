@@ -1,72 +1,45 @@
-<mat-toolbar class="toolbar">
-    <span class="tool-headings">Logo</span>
-    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" class="tool-headings"></mat-icon>
-    <span class="tool-headings">About us</span>
-    <span class="tool-headings">Features</span>
-    <span class="tool-headings">Contact us</span>
-    <mat-icon aria-hidden="false">login</mat-icon>
-    <span class="tool-headings">Logout</span>
-    <button mat-icon-button class="menu-button" aria-label="Toggle menu" (click)="toggleMenu()">
-        <mat-icon>menu</mat-icon>
-    </button>
-</mat-toolbar>
-<mat-sidenav-container class="container">
-    <mat-sidenav class="sidenav" #sidenav>
+
+    <mat-drawer-container autosize>
+        <mat-drawer #drawer opened="true" mode="side" position="start">
         <mat-nav-list>
-            <a mat-list-item href="#">Home</a>
-            <a mat-list-item href="#">About</a>
-            <a mat-list-item href="#">Features</a>
-            <a mat-list-item href="#">Contact</a>
+            <mat-list-item>
+                <button routerLink="card" mat-button><mat-icon class="tool-heading1">dashboard</mat-icon> Dashboard</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button routerLink="" mat-button><mat-icon class="tool-heading1">tv</mat-icon> Info</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button routerLink="slider" mat-button><mat-icon class="tool-heading1">group</mat-icon> User</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button routerLink="table" mat-button><mat-icon class="tool-heading1">home</mat-icon> parent menu</button>
+            </mat-list-item>
+
         </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-    </mat-sidenav-content>
-</mat-sidenav-container>
-
-
-<mat-drawer-container class="example-container">
-    <mat-drawer mode="side" class="aside-bar" opened>
-        <div class="content1">
-            <button mat-icon-button class="side-content tool-headings">
-                <mat-icon style="color: black;">arrow_back</mat-icon>
-            </button>
-        </div>
-        <div class="content">
-            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" class="home-icon"></mat-icon>
-            <span class="tool-heading1">Dashboard</span>
-        </div>
-        <div class="content">
-            <mat-icon class="home-icon">tv</mat-icon>
-
-            <span class="tool-heading1">info</span>
-        </div>
-        <div class="content">
-            <mat-icon class="home-icon">group</mat-icon>
-            <span class="tool-heading1">User</span>
-        </div>
-        <div class="content">
-            <mat-icon class="home-icon">person</mat-icon>
-            <span class="tool-heading1">Parent Menu <mat-icon class="dropdown-icon">arrow_drop_down</mat-icon></span>
-        </div>
-    </mat-drawer>
-
-    <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
-        <!-- Item Column -->
-        <ng-container matColumnDef="item">
-          <th mat-header-cell *matHeaderCellDef> Item </th>
-          <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
-          <td mat-footer-cell *matFooterCellDef> Total </td>
-        </ng-container>
-      
-        <!-- Cost Column -->
-        <ng-container matColumnDef="cost">
-          <th mat-header-cell *matHeaderCellDef> Cost </th>
-          <td mat-cell *matCellDef="let transaction"> {{transaction.cost | currency}} </td>
-          <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-      </table>
+        </mat-drawer>
+        <mat-drawer-content>
+            <div style="text-align: center;min-height: 600px;">
+                <table mat-table [dataSource]="transactions">
+       
+                    <ng-container matColumnDef="item">
+                        <th mat-header-cell *matHeaderCellDef> Item </th>
+                        <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
+                        <td mat-footer-cell *matFooterCellDef> Total </td>
+                    </ng-container>
+            
+                    
+                    <ng-container matColumnDef="cost">
+                        <th mat-header-cell *matHeaderCellDef> Cost </th>
+                        <td mat-cell *matCellDef="let transaction"> {{transaction.cost | currency}} </td>
+                        <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
+                    </ng-container>
+            
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                </table>
+                <router-outlet></router-outlet>
+                </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
       
